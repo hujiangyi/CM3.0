@@ -285,6 +285,9 @@ class cm30forset :
             self.log('清空预配置频点失败，测试终止',isFail=True)
             return False
         preFreq = self.getConfig('config','preFreq')
+        if  '' == preFreq:
+            self.log('没有配置预配置频点，跳过写入预配置频点过程，测试继续')
+            return True
         freqs = preFreq.split(',')
         for freq in freqs:
             self.send('ds_freq {}'.format(freq))
@@ -300,6 +303,9 @@ class cm30forset :
     def checkFreq(self):
         self.step = 13
         preFreq = self.getConfig('config','preFreq')
+        if  '' == preFreq:
+            self.log('没有配置预配置频点，跳过检查预配置频点过程，测试继续')
+            return True
         freqs = preFreq.split(',')
         fs = []
         for freq in freqs:
