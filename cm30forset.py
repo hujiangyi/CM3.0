@@ -386,6 +386,8 @@ class cm30forset :
             self.db.updataLog(self.sn.get(),testLog,isFail,"{}".format(20))
         self.step = 20
         self.log('测试结束',isFail=isFail)
+        self.sn.set("")
+        self.mac1.set("")
         self.close()
         self.saveLog()
     ###############################################com##################################################################
